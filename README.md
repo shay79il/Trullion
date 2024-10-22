@@ -49,8 +49,8 @@ sudo tee -a /etc/hosts > /dev/null <<< "127.0.0.1  app2.local"
 
 7. Access the Application
    - Wait for a couple of minutes 
-   - Open your browser and navigate to [app1.local](http://app1.local/create)
-   - Open your browser and navigate to [app2.local](http://app2.local/create)
+   - Open your browser and navigate to [app1.local](http://app1.local)
+   - Open your browser and navigate to [app2.local](http://app2.local)
 
 ## Cleanup
 
