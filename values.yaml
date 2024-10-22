@@ -1,0 +1,29 @@
+# Default values for hello-world.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: ""
+
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingressClass: nginx
+
+apps:
+  app1:
+    ingressHost: app1.local
+    configmap:
+      SERVICE_NAME: app1
+  app2:
+    ingressHost: app2.local
+    configmap:
+      SERVICE_NAME: app2

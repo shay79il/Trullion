@@ -1,0 +1,22 @@
+{{- range $appName, $appConfig := .Values.apps }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ printf "%s-%s" (include "hello-world.fullname" $) $appName }}
+  labels:
+    {{- include "hello-world.labels" $ | nindent 4 }}
+spec:
+  ingressClassName: {{ $.Values.ingressClass }}
+  rules:
+    - host: {{ $appConfig.ingressHost }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ printf "%s-%s" (include "hello-world.fullname" $) $appName }}
+                port:
+                  number: {{ $.Values.service.port }}
+{{- end }}

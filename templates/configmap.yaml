@@ -1,0 +1,15 @@
+{{- range $appName, $appValues := .Values.apps }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ printf "%s-%s" (include "hello-world.fullname" $) $appName }}
+data:
+  index.html: |
+    <html lang="">
+    <h1> Hi Assaf it's {{ $appValues.configmap.SERVICE_NAME }} </h1>
+    <body>
+      This is Nginx Server
+    </body>
+    </html>
+{{- end }}
